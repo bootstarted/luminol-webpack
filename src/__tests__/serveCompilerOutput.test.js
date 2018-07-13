@@ -4,7 +4,7 @@ import {compose, status, error} from 'midori';
 import {fetch} from 'midori/test';
 import MemoryFileSystem from 'memory-fs';
 
-import serveCompilerOutput from '/internal/webpack/serveCompilerOutput';
+import serveCompilerOutput from '/serveCompilerOutput';
 
 const compile = (compiler) =>
   new Promise((resolve, reject) => {

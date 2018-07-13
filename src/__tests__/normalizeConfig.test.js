@@ -1,4 +1,4 @@
-import normalizeConfig from '/internal/webpack/normalizeConfig';
+import normalizeConfig from '/normalizeConfig';
 import {identity} from 'ramda';
 
 describe('/internal/compiler/normalizeConfig', () => {

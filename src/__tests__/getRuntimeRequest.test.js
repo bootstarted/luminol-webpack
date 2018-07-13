@@ -1,4 +1,4 @@
-import runtime from '/internal/webpack/getRuntimeRequest';
+import runtime from '/getRuntimeRequest';
 
 describe('/runtime', () => {
   it('should work with web', () => {

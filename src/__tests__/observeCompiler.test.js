@@ -1,4 +1,4 @@
-import observeCompiler from '/internal/webpack/observeCompiler';
+import observeCompiler from '/observeCompiler';
 import webpack from 'webpack';
 import demoConfig from '/../demo/webpack/client.webpack.config.js';
 
