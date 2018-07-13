@@ -3,11 +3,11 @@
 trap "exit" INT TERM
 trap "kill 0" EXIT
 
-export DEBUG="meta-serve:*"
+export DEBUG="luminol:*"
 
-chmod +x ./bin/meta-serve.js
+chmod +x ./bin/luminol.js
 
-./bin/meta-serve.js \
+./bin/luminol.js \
   --ui=false \
   --config ./demo/webpack/client.webpack.config.js \
   --content ./demo \

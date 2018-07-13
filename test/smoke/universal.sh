@@ -3,9 +3,9 @@
 trap "exit" INT TERM
 trap "kill 0" EXIT
 
-export DEBUG="meta-serve:* meta-serve-webpack:*"
+export DEBUG="luminol:* luminol-webpack:*"
 
-./node_modules/.bin/meta-serve \
+./node_modules/.bin/luminol \
   --ui=false \
   --config ./demo/webpack/client.webpack.config.js \
   --config ./demo/webpack/server.webpack.config.js \

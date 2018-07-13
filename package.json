@@ -1,9 +1,9 @@
 {
-  "name": "meta-serve-webpack",
+  "name": "luminol-webpack",
   "version": "1.0.0-alpha.1",
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "license": "CC0-1.0",
-  "repository": "metalabdesign/meta-serve-webpack",
+  "repository": "metalabdesign/luminol-webpack",
   "main": "./lib/index.js",
   "scripts": {
     "prepublish": "npm run clean && npm run build",
@@ -56,7 +56,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "peerDependencies": {
-    "meta-serve": "*",
+    "luminol": "*",
     "webpack": "^1.12.2 || ^2.2.0 || ^3.5.6 || ^4.0.0-alpha.0"
   },
   "jest": {
