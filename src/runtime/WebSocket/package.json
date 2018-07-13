@@ -1,0 +1,4 @@
+{
+  "main": "./WebSocket.node.js",
+  "browser": "./WebSocket.web.js"
+}

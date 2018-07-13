@@ -1,0 +1,16 @@
+extends:
+  - metalab
+  - metalab/react
+rules:
+  no-console: 0
+  camelcase: 0
+  no-use-before-define: 0
+env:
+  node: true
+globals:
+  require: true
+overrides:
+  -
+    files: "*.test.js"
+    env:
+      jest: true

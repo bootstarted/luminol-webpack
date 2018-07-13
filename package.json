@@ -1,0 +1,66 @@
+{
+  "name": "meta-serve-webpack",
+  "version": "1.0.0",
+  "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
+  "license": "CC0-1.0",
+  "repository": "metalabdesign/meta-serve-webpack",
+  "main": "./lib/index.js",
+  "scripts": {
+    "prepublish": "npm run clean && npm run build",
+    "clean": "./node_modules/.bin/rimraf lib",
+    "build": "./node_modules/.bin/babel --copy-files --ignore '**/__tests__' -s -d lib src",
+    "test:lint": "./node_modules/.bin/eslint .",
+    "test:smoke": "echo 'todo'",
+    "test:flow": "./node_modules/.bin/flow check",
+    "test:spec": "NODE_ENV=test ./node_modules/.bin/jest --coverage",
+    "test": "npm run test:lint && npm run test:spec && npm run test:smoke"
+  },
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.2.5",
+    "apollo-client": "^2.3.5",
+    "apollo-link-ws": "^1.0.8",
+    "cuid": "^2.1.1",
+    "debug": "^3.1.0",
+    "midori": "^3.0.0",
+    "ramda": "^0.25.0",
+    "subscriptions-transport-ws": "^0.9.12",
+    "url-join": "^4.0.0",
+    "webpack-partial": "^2.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.44",
+    "@babel/plugin-syntax-flow": "^7.0.0-beta.44",
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-flow": "^7.0.0-beta.44",
+    "@babel/preset-react": "^7.0.0-beta.44",
+    "@babel/register": "^7.0.0-beta.44",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.2.0",
+    "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-graphql-tag": "^1.6.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-metalab": "^9.0.1",
+    "flow-bin": "^0.75.0",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "jest": "^23.3.0",
+    "ncp": "^2.0.0",
+    "node-fetch": "^1.7.3",
+    "prettier": "^1.12.1",
+    "stats-webpack-plugin": "^0.6.2",
+    "webpack": "^4.5.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "peerDependencies": {
+    "meta-serve": "*",
+    "webpack": "^1.12.2 || ^2.2.0 || ^3.5.6 || ^4.0.0-alpha.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/__tests__/**/*.test.js"]
+  }
+}

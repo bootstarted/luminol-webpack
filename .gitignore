@@ -1,0 +1,12 @@
+dist
+node_modules
+*.log
+/lib
+/bin
+/*.js
+/hub
+/internal
+/action
+/coverage
+*.map
+*.flow
