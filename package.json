@@ -1,6 +1,6 @@
 {
   "name": "meta-serve-webpack",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
   "license": "CC0-1.0",
   "repository": "metalabdesign/meta-serve-webpack",
@@ -61,6 +61,11 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testMatch": ["**/__tests__/**/*.test.js"]
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js"
+    ]
   }
 }

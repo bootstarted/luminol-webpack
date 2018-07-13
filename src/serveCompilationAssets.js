@@ -36,7 +36,6 @@ const getPath = (compiler: WebpackCompiler) => {
 
 export default async (client: Client, compiler: WebpackCompiler) => {
   const path = getPath(compiler);
-  const outputPath = compiler.outputPath;
 
   if (typeof path !== 'string') {
     return;

@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import createConfig from '/internal/webpack/createConfig';
+import createConfig from '/createConfig';
 
 const plugins = (config) => {
   return (config.plugins || []).map((x) => x.constructor.toString()).join('|');

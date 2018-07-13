@@ -1,4 +1,4 @@
-import readFileFromCompiler from '/internal/webpack/readFileFromCompiler';
+import readFileFromCompiler from '/readFileFromCompiler';
 
 describe('/internal/webpack/readFileFromCompiler', () => {
   it('should pass file name through', async () => {
