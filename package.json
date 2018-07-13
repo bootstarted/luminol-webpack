@@ -24,7 +24,6 @@
     "midori": "^3.0.0",
     "ramda": "^0.25.0",
     "subscriptions-transport-ws": "^0.9.12",
-    "url-join": "^4.0.0",
     "webpack-partial": "^2.2.0"
   },
   "devDependencies": {
@@ -52,6 +51,7 @@
     "node-fetch": "^1.7.3",
     "prettier": "^1.12.1",
     "stats-webpack-plugin": "^0.6.2",
+    "url-join": "^4.0.0",
     "webpack": "^4.5.0",
     "webpack-node-externals": "^1.7.2"
   },

@@ -13,10 +13,8 @@ const listen = http.Server.prototype.listen;
 
 const {url, compilerId} = parseResourceQuery(__resourceQuery);
 
-global.__webpack_udev_client__ = createClient(url);
-global.__webpack_udev_url__ = url;
+const client = createClient(url);
 
-const client = global.__webpack_udev_client__;
 const appId = cuid();
 
 const REGISTER_APP_MUTATION = gql`
@@ -41,15 +39,8 @@ const REGISTER_PROXY_MUTATION = gql`
 `;
 
 const getProxyPath = (): string => {
-  if (
-    typeof process.env.WEBPACK_UDEV_PROXY_PATH !== 'string' ||
-    process.env.WEBPACK_UDEV_PROXY_PATH.length <= 0
-  ) {
-    console.log('⚠️  Node service proxy path set to `/`.');
-    console.log('⚠️  Please set `devServer.publicPath` in your config.');
-    return '/';
-  }
-  return process.env.WEBPACK_UDEV_PROXY_PATH;
+  // TODO: FIXME: Figure out mechanism of supplying proxy path.
+  return '/';
 };
 
 // Hack the HTTP server prototype to send address information upstream.
