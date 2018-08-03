@@ -34,13 +34,13 @@ const url = replaceHost(originalUrl, newHost);
 const client = createClient(url);
 
 const registerApp = gql`
-  mutation registerApp($appId: ID, $compilerId: ID) {
+  mutation registerApp($appId: ID!, $compilerId: ID!) {
     registerApp(appId: $appId, compilerId: $compilerId)
   }
 `;
 
 const unregisterApp = gql`
-  mutation unregisterApp($appId: ID) {
+  mutation unregisterApp($appId: ID!) {
     unregisterApp(appId: $appId)
   }
 `;

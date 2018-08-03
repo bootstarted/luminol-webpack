@@ -18,13 +18,13 @@ const client = createClient(url);
 const appId = cuid();
 
 const REGISTER_APP_MUTATION = gql`
-  mutation registerApp($appId: ID, $compilerId: ID) {
+  mutation registerApp($appId: ID!, $compilerId: ID!) {
     registerApp(appId: $appId, compilerId: $compilerId)
   }
 `;
 
 const UNREGISTER_APP_MUTATION = gql`
-  mutation unregisterApp($appId: ID) {
+  mutation unregisterApp($appId: ID!) {
     unregisterApp(appId: $appId)
   }
 `;

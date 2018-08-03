@@ -6,7 +6,7 @@ import type {WebpackCompiler, WebpackStats, Client} from '/types';
 const debug = createDebug('thing');
 
 const setCompilerStatus = gql`
-  mutation setCompilerStatus($compilerId: ID, $status: CompilerStatus) {
+  mutation setCompilerStatus($compilerId: ID!, $status: CompilerStatus!) {
     setCompilerStatus(compilerId: $compilerId, status: $status)
   }
 `;
