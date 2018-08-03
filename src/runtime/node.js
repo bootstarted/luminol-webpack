@@ -30,10 +30,19 @@ const UNREGISTER_APP_MUTATION = gql`
 `;
 
 const REGISTER_PROXY_MUTATION = gql`
-  mutation registerProxy($url: String, $path: String) {
-    registerProxy(url: $url, path: $path) {
-      url
-      path
+  mutation registerProxy(
+    $url: String!
+    $path: String!
+    $appId: ID!
+    $compilerId: ID!
+  ) {
+    registerProxy(
+      url: $url
+      path: $path
+      appId: $appId
+      compilerId: $compilerId
+    ) {
+      id
     }
   }
 `;
