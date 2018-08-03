@@ -70,6 +70,9 @@ const withRuntime = curry(
       if (!previous.length) {
         throw new TypeError('Must have a valid `entry`.');
       }
+      if (previous.indexOf(value) !== -1) {
+        return previous;
+      }
       const last = previous.length - 1;
       return previous
         .slice(0, last)

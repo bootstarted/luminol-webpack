@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 
 import createClient from './createClient';
 import createRuntime from './createRuntime';
+import log from './log';
 import {parseResourceQuery} from './util';
 
 declare var __resourceQuery: string;
@@ -31,6 +32,8 @@ const replaceHost = (url, newHost) => {
 const newHost = extractHost(window.location.href);
 const url = replaceHost(originalUrl, newHost);
 
+log.info(`Connecting to ${url}...`);
+
 const client = createClient(url);
 
 const registerApp = gql`
@@ -50,9 +53,7 @@ createRuntime({
   compilerId,
   client,
   reload() {
-    console.log('🔥  Requested full reload. Reload window to see changes.');
-    // TODO: Consider what to do about this scenario.
-    // window.location.reload();
+    log.warn('Reload window to see changes.');
   },
 });
 
