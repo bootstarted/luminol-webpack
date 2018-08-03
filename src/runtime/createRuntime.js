@@ -1,6 +1,7 @@
 // @flow
 import gql from 'graphql-tag';
 import {unaccepted} from './util';
+import log from './log';
 
 import type {Client} from '/types';
 
@@ -117,7 +118,11 @@ export default ({reload, client, compilerId, appId}: Options) => {
               updatedModules,
             );
             if (unacceptedModules.length > 0) {
-              console.log('NO ACCEPT', unacceptedModules);
+              log.group.warn('Some modules could not be updated');
+              unacceptedModules.forEach((id) => {
+                log.warn(id);
+              });
+              log.group.end();
               client.mutate({
                 mutation: APP_NOTIFY_UPDATE_MODULES_UNACCEPTED_MUTATION,
                 variables: {appId, modules: unacceptedModules.map(getModule)},
@@ -125,13 +130,18 @@ export default ({reload, client, compilerId, appId}: Options) => {
               reload();
               return;
             } else if (upToDate()) {
-              console.log('OK');
+              log.info('Update ignored, app already up-to-date.');
               client.mutate({
                 mutation: APP_NOTIFY_UPDATE_PROGRESS_MUTATION,
                 variables: {appId, status: 'IGNORED'},
               });
             } else {
-              console.log('APPLIED');
+              log.info('Update applied.');
+              log.group.info('Update modules:');
+              renewedModules.forEach((id) => {
+                log.info(id);
+              });
+              log.group.end();
               client.mutate({
                 mutation: APP_NOTIFY_UPDATE_PROGRESS_MUTATION,
                 variables: {appId, status: 'APPLIED'},
@@ -139,6 +149,8 @@ export default ({reload, client, compilerId, appId}: Options) => {
             }
           })
           .catch((error) => {
+            log.error('Unable to apply update.');
+            log.error(error);
             client.mutate({
               mutation: APP_NOTIFY_UPDATE_ERROR_MUTATION,
               variables: {appId, error},
@@ -147,6 +159,8 @@ export default ({reload, client, compilerId, appId}: Options) => {
           });
       })
       .catch((error) => {
+        log.error('Unable to fetch update.');
+        log.error(error);
         client.mutate({
           mutation: APP_NOTIFY_UPDATE_ERROR_MUTATION,
           variables: {appId, error},
@@ -159,6 +173,7 @@ export default ({reload, client, compilerId, appId}: Options) => {
     if (!upToDate()) {
       if (module.hot) {
         if (module.hot.status() === 'idle') {
+          log.info('Update in progress.');
           client.mutate({
             mutation: APP_NOTIFY_UPDATE_PROGRESS_MUTATION,
             variables: {appId, status: 'PENDING'},
@@ -169,6 +184,7 @@ export default ({reload, client, compilerId, appId}: Options) => {
         reload();
       }
     } else {
+      log.info('Update ignored, app already up-to-date.');
       client.mutate({
         mutation: APP_NOTIFY_UPDATE_PROGRESS_MUTATION,
         variables: {appId, status: 'IGNORED'},
@@ -186,8 +202,8 @@ export default ({reload, client, compilerId, appId}: Options) => {
       if (compiler) {
         handleHash(compiler.hash);
       } else {
-        console.error(`Unknown compiler: '${compilerId}'.`);
-        console.error('This probably means you need to restart this app.');
+        log.error(`Unknown compiler: '${compilerId}'.`);
+        log.error('This probably means you need to restart this app.');
       }
     },
   });
