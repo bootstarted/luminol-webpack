@@ -22,7 +22,7 @@
     "cuid": "^2.1.1",
     "debug": "^4.0.0",
     "midori": "^3.0.0",
-    "ramda": "^0.25.0",
+    "ramda": "^0.26.0",
     "subscriptions-transport-ws": "^0.9.12",
     "webpack-partial": "^2.2.0"
   },
